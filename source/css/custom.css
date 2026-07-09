@@ -1,0 +1,69 @@
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  letter-spacing: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+#nexmoe-content article,
+#nexmoe-content .nexmoe-post article,
+#nexmoe-content .nexmoe-archives article {
+  line-height: 1.9;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+#nexmoe-content p,
+#nexmoe-content li {
+  line-height: 1.9;
+}
+
+#nexmoe-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+#nexmoe-content article img,
+#nexmoe-content .nexmoe-archives article img {
+  border-radius: 12px;
+}
+
+#nexmoe-content pre,
+#nexmoe-content code {
+  border-radius: 10px;
+}
+
+#nexmoe-content pre {
+  padding: 1rem 1.1rem;
+}
+
+#nexmoe-content code {
+  padding: 0.15rem 0.35rem;
+}
+
+.nexmoe-post-cover h1,
+.nexmoe-archives h1,
+.nexmoe-widget-title {
+  text-wrap: balance;
+}
+
+.nexmoe-widget-wrap .tagcloud a,
+.nexmoe-archives .tagcloud a,
+.nexmoe-archives .categories a {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nexmoe-widget-wrap .tagcloud a:hover,
+.nexmoe-archives .tagcloud a:hover,
+.nexmoe-archives .categories a:hover {
+  transform: translateY(-1px);
+}

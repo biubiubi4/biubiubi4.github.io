@@ -1,0 +1,176 @@
+avatar: /images/head/head.jpg
+
+background:
+  path: /images/background/xiaomai.jpg
+  width: 1280
+  height: 726
+
+tagsCovers:
+  es6: /images/post/es6.jpg
+  JavaScript: /images/post/JavaScript.jpg
+  TypeScript: /images/post/TypeScript.jpg
+  css: /images/post/css.jpg
+  node: /images/post/nodejs.jpg
+  vue: /images/post/vue.jpg
+  webpack: /images/post/webpack.jpg
+  git: /images/post/git.jpg
+  java: /images/post/java.jpg
+  echarts: /images/post/echarts.jpg
+  微信小程序: /images/post/wechat_applet.jpg
+  浏览器: /images/post/browser.jpg
+  算法: /images/post/algorithm.jpg
+  数据结构: /images/post/data.jpg
+  工具: /images/post/editor.jpg
+  UI库: /images/post/ui.jpg
+  美化: /images/post/beautify.jpg
+  vite: /images/post/vite.jpg
+  markerdown: /images/post/markerdown.jpg
+  AI: /images/post/AI.jpg
+
+favicon:
+  href: /images/head/head.jpg
+  type: image/jpg
+
+function:
+  globalToc: true
+  wordCount: false
+  copyCode: true
+
+imageCDN:
+  enable: false
+  origin: /../../images/
+  to: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/
+
+customStyles: []
+
+iconlib: //at.alicdn.com/t/font_2421060_8z08qcz5sq3.css
+
+menu:
+  首页:
+    - /
+    - icon-meishi
+  文章归档:
+    - /archives.html
+    - icon-hanbao1
+  关于我:
+    - /about.html
+    - icon-jiubei1
+  友情链接:
+    - /friend.html
+    - icon-cola
+  碎碎念:
+    - /memos.html
+    - icon-tangguo
+
+memos:
+  host: https://memos.tangyuxian.com
+  pageSize: 10
+  filter: "#moments"
+  enableFancybox: true
+
+widgets:
+  - name: switch_theme
+    enable: true
+  - name: search
+    enable: true
+    options:
+      search:
+        type: local
+        url: https://www.bing.com/search?q=site:lyccyl.cn
+        id: <swiftype-id>
+  - name: social
+    enable: true
+    options:
+      social:
+        QQ:
+          - http://wpa.qq.com/msgrd?v=3&uin=1419340958&site=qq&menu=yes
+          - icon-QQ
+          - rgb(64, 196, 255)
+          - rgba(64, 196, 255, .1)
+        mail:
+          - mailto:1419340958@qq.com
+          - icon-mail-fill
+          - rgb(249, 8, 8)
+          - rgba(249, 8, 8, .1)
+        GitHub:
+          - https://github.com/biubiubi4/
+          - icon-github
+          - rgb(25, 23, 23)
+          - rgba(25, 23, 23, .15)
+  - name: category
+    enable: true
+  - name: tagcloud
+    enable: true
+    options:
+      maxTagcloud: 17
+  - name: hitokoto
+    enable: false
+    options:
+      widgetHitokoto:
+        loading_placeholder: '获取中...'
+        loading_error_placeholder: '获取失败...'
+        category:
+  - name: archive
+    enable: true
+    options:
+      widgetAchive:
+        archive_type: 'year'
+        show_count: true
+  - name: recent_posts
+    enable: false
+  - name: link
+    enable: false
+    options:
+      widgetLink:
+        - title: 糖糖的闺中小秘密
+          img: https://cdn.tangyuxian.com/PicGoImages/202304272004917.jpg
+          link: https://memos.tangyuxian.com/
+
+pendants:
+  - name: clock
+    enable: false
+  - name: qweather
+    enable: false
+
+copyTip: |
+  著作权归作者所有。
+  商业转载请联系作者获得授权，非商业转载请注明出处。
+  来源：%url
+
+chatbot:
+  enable: true
+  options:
+    title: LYC 的 AI 分身 (BETA)
+    chat: https://www.tangyuxian.com/weifu.html
+    style: "width: 100%; height: 100%; overflow: hidden;"
+
+slotHead: |
+  <meta name="theme-color" content="#e67249">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://lib.baomitu.com" crossorigin>
+  <link rel="stylesheet" href="/css/custom.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z7TFL96ZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1Z7TFL96ZH');
+  </script>
+  <script src="https://unpkg.com/hexo-shiki-plugin@1.0.27/lib/codeblock.js"></script>
+
+slotFooter: |
+
+slotSidebar: |
+  <br><a target="_blank" href="https://beian.miit.gov.cn/">赣ICP备2021002341号</a>
+  <div style="font-size: 12px">
+     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+     本站总访问量 <a id="busuanzi_value_site_pv"></a> 次<br />
+     本站访客数 <a id="busuanzi_value_site_uv"></a> 人次
+  </div>
+
+slotCopyright: |
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+slotArticleEnd: |
