@@ -1,7 +1,7 @@
-avatar: /images/head/head.jpg
+avatar: /images/head/head.svg
 
 background:
-  path: /images/background/xiaomai.jpg
+  path: /images/background/xiaomai.svg
   width: 1280
   height: 726
 
@@ -28,8 +28,8 @@ tagsCovers:
   AI: /images/post/AI.jpg
 
 favicon:
-  href: /images/head/head.jpg
-  type: image/jpg
+  href: /images/head/head.svg
+  type: image/svg+xml
 
 function:
   globalToc: true

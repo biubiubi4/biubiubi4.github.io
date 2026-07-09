@@ -1,5 +1,7 @@
 :root {
   scroll-behavior: smooth;
+  --character: url("/images/background/character.svg");
+  --chat: url("/images/background/aiChat.svg");
 }
 
 body {
