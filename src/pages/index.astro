@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import PostList from "../components/PostList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, topics } from "../data/site";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Front-end / Tools / AI</p>
+      <h1>{site.title}</h1>
+      <p>{site.description}</p>
+      <div class="hero-actions">
+        <a href="/archives/">阅读文章</a>
+        <a href={site.aiChat} target="_blank" rel="noreferrer">AI 分身</a>
+      </div>
+    </div>
+    <img src="/images/background/xiaomai.svg" alt="" width="520" height="295" />
+  </section>
+
+  <section class="section-grid">
+    <div>
+      <h2>最近文章</h2>
+      <PostList posts={posts.slice(0, 5)} />
+    </div>
+    <aside>
+      <h2>关注主题</h2>
+      <ul class="pill-list">
+        {topics.map((topic) => <li>{topic}</li>)}
+      </ul>
+      <div class="note">
+        <h2>碎碎念</h2>
+        <p>不适合写成完整文章的日常记录、临时想法和小片段，会在这里保持轻量更新。</p>
+        <a href="/memos/">去看看</a>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
+    gap: 2rem;
+    align-items: center;
+    min-height: 520px;
+    padding: 2.5rem 0 3rem;
+  }
+
+  .eyebrow {
+    color: var(--primary);
+    font-weight: 800;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 6.6rem);
+    line-height: 0.95;
+  }
+
+  .hero p:not(.eyebrow) {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.85;
+  }
+
+  .hero img {
+    justify-self: end;
+    width: min(100%, 520px);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+  }
+
+  .hero-actions a {
+    border: 1px solid rgba(216, 95, 60, 0.35);
+    border-radius: 999px;
+    background: var(--primary);
+    padding: 0.75rem 1rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  .hero-actions a + a {
+    background: transparent;
+    color: var(--primary-strong);
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+  }
+
+  aside {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .note {
+    border-left: 4px solid var(--green);
+    padding-left: 1rem;
+  }
+
+  .note p {
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .note a {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  @media (max-width: 860px) {
+    .hero,
+    .section-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      min-height: auto;
+    }
+
+    .hero img {
+      justify-self: start;
+    }
+  }
+</style>

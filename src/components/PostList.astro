@@ -1,0 +1,80 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="post-list">
+  {
+    posts.map((post) => (
+      <a class="post-item" href={`/blog/${post.slug}/`}>
+        <span>{post.data.pubDate.toLocaleDateString("zh-CN")}</span>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.description}</p>
+        <div>
+          {post.data.tags.map((tag) => (
+            <em>{tag}</em>
+          ))}
+        </div>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .post-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .post-item {
+    display: grid;
+    gap: 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 253, 249, 0.72);
+    padding: 1.1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .post-item:hover {
+    border-color: rgba(216, 95, 60, 0.42);
+    color: inherit;
+    transform: translateY(-1px);
+  }
+
+  .post-item span {
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .post-item h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .post-item p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .post-item div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .post-item em {
+    border-radius: 999px;
+    background: rgba(47, 118, 101, 0.1);
+    padding: 0.25rem 0.55rem;
+    color: var(--green);
+    font-size: 0.82rem;
+    font-style: normal;
+  }
+</style>

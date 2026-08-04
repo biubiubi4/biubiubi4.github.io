@@ -1,0 +1,58 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, tags = [] } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="post">
+    <header class="page-title">
+      <p class="eyebrow">文章</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <div class="post-meta">
+        <time datetime={pubDate.toISOString()}>{pubDate.toLocaleDateString("zh-CN")}</time>
+        {tags.map((tag) => <span>{tag}</span>)}
+      </div>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-bottom: 2rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.85rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    color: var(--muted);
+  }
+
+  .post-meta time,
+  .post-meta span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 253, 249, 0.72);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.9rem;
+  }
+</style>

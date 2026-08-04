@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import PostList from "../components/PostList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title="文章归档" description="LYC 的文章归档">
+  <section class="page-title">
+    <h1>文章归档</h1>
+    <p>按时间整理技术笔记、项目实践、工具探索和日常思考。</p>
+  </section>
+  <PostList posts={posts} />
+</BaseLayout>
