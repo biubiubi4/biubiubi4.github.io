@@ -11,16 +11,41 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 
 <BaseLayout>
   <section class="hero">
-    <div>
-      <p class="eyebrow">Front-end / Tools / AI</p>
+    <div class="hero-copy">
+      <p class="eyebrow">UNTIL THE EARTH BECOMES A LIME</p>
       <h1>{site.title}</h1>
-      <p>{site.description}</p>
+      <p>
+        {site.description}
+        把前端工程、AI 实验和生活复盘装进旅行日志，沿着热风、红土和酸橙色的路标慢慢写到天亮。
+      </p>
       <div class="hero-actions">
         <a href="/archives/">阅读文章</a>
-        <a href={site.aiChat} target="_blank" rel="noreferrer">AI 分身</a>
+        <a href={site.aiChat} target="_blank" rel="noreferrer">AI 分享</a>
       </div>
     </div>
-    <img src="/images/background/xiaomai.svg" alt="" width="520" height="295" />
+    <div class="route-card" aria-label="博客主题信息">
+      <span>LYC / SOUTHBOUND LOG</span>
+      <strong>酸橙坐标</strong>
+      <p>技术笔记、工具链路线、AI 实验与一点生活碎片，在这里被收成明亮的路边标记。</p>
+    </div>
+  </section>
+
+  <section class="field-notes" aria-label="博客路线">
+    <article>
+      <span>01</span>
+      <h2>红土路标</h2>
+      <p>把工程问题拆成能复用的路线，记录每次绕路、加速和抵达。</p>
+    </article>
+    <article>
+      <span>02</span>
+      <h2>酸橙高光</h2>
+      <p>保留一点明亮的奇想，用 AI 和工具让日常工作多一点弹性。</p>
+    </article>
+    <article>
+      <span>03</span>
+      <h2>中途小憩</h2>
+      <p>碎碎念不追求完整结论，只存放当下闪过但值得回看的念头。</p>
+    </article>
   </section>
 
   <section class="section-grid">
@@ -36,7 +61,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
       <div class="note">
         <h2>碎碎念</h2>
         <p>不适合写成完整文章的日常记录、临时想法和小片段，会在这里保持轻量更新。</p>
-        <a href="/memos/">去看看</a>
+        <a href="/memos/">去看一眼</a>
       </div>
     </aside>
   </section>
@@ -44,35 +69,71 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 
 <style>
   .hero {
+    position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
+    grid-template-columns: minmax(0, 1fr) 310px;
     gap: 2rem;
-    align-items: center;
-    min-height: 520px;
-    padding: 2.5rem 0 3rem;
+    align-items: end;
+    min-height: 630px;
+    margin-top: 0.8rem;
+    border: 1px solid rgba(255, 250, 240, 0.5);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(90deg, rgba(255, 245, 207, 0.96) 0%, rgba(255, 245, 207, 0.82) 37%, rgba(255, 245, 207, 0.06) 68%),
+      url("/images/background/xiaomai.jpg") center / cover;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    position: absolute;
+    inset: auto 0 0;
+    height: 42%;
+    background:
+      linear-gradient(90deg, transparent 0 45%, rgba(217, 242, 74, 0.32) 45% 47%, transparent 47% 53%, rgba(217, 242, 74, 0.32) 53% 55%, transparent 55%),
+      linear-gradient(180deg, transparent, rgba(23, 32, 21, 0.72));
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-copy {
+    max-width: 700px;
   }
 
   .eyebrow {
-    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 1rem;
+    border: 1px solid rgba(23, 32, 21, 0.14);
+    border-radius: 999px;
+    background: rgba(217, 242, 74, 0.76);
+    padding: 0.38rem 0.68rem;
+    color: var(--text);
+    font-size: 0.78rem;
     font-weight: 800;
+    letter-spacing: 0;
   }
 
   h1 {
     margin: 0;
-    font-size: clamp(3rem, 8vw, 6.6rem);
-    line-height: 0.95;
+    max-width: 8em;
+    font-size: clamp(3.2rem, 8vw, 6.7rem);
+    line-height: 0.96;
+    text-wrap: balance;
   }
 
   .hero p:not(.eyebrow) {
     max-width: 680px;
-    color: var(--muted);
+    color: #4e432d;
     font-size: 1.15rem;
     line-height: 1.85;
-  }
-
-  .hero img {
-    justify-self: end;
-    width: min(100%, 520px);
   }
 
   .hero-actions {
@@ -83,17 +144,47 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   }
 
   .hero-actions a {
-    border: 1px solid rgba(216, 95, 60, 0.35);
+    border: 1px solid rgba(23, 32, 21, 0.88);
     border-radius: 999px;
-    background: var(--primary);
+    background: var(--road);
     padding: 0.75rem 1rem;
     color: white;
     font-weight: 700;
   }
 
   .hero-actions a + a {
-    background: transparent;
-    color: var(--primary-strong);
+    border-color: rgba(23, 32, 21, 0.16);
+    background: rgba(217, 242, 74, 0.76);
+    color: var(--text);
+  }
+
+  .route-card {
+    justify-self: end;
+    width: min(100%, 310px);
+    border: 1px solid rgba(255, 250, 240, 0.44);
+    border-radius: var(--radius);
+    background: rgba(23, 32, 21, 0.76);
+    padding: 1rem;
+    color: #fffaf0;
+    backdrop-filter: blur(10px);
+  }
+
+  .route-card span {
+    color: var(--primary);
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  .route-card strong {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 1.45rem;
+  }
+
+  .route-card p {
+    margin-bottom: 0;
+    color: rgba(255, 250, 240, 0.8);
+    line-height: 1.7;
   }
 
   .section-grid {
@@ -101,10 +192,49 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 2rem;
     align-items: start;
+    margin-top: 2rem;
+  }
+
+  .field-notes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .field-notes article {
+    border: 1px solid rgba(255, 250, 240, 0.42);
+    border-radius: var(--radius);
+    background: rgba(23, 32, 21, 0.54);
+    padding: 1rem;
+    color: #fffaf0;
+    box-shadow: 0 18px 54px rgba(23, 32, 21, 0.12);
+  }
+
+  .field-notes span {
+    display: inline-flex;
+    border-radius: 999px;
+    background: var(--primary);
+    padding: 0.18rem 0.52rem;
+    color: var(--text);
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .field-notes h2 {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 1.08rem;
+  }
+
+  .field-notes p {
+    margin: 0;
+    color: rgba(255, 250, 240, 0.76);
+    line-height: 1.7;
   }
 
   h2 {
     margin: 0 0 1rem;
+    color: #fffaf0;
     font-size: 1.35rem;
   }
 
@@ -114,23 +244,27 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   }
 
   .note {
-    border-left: 4px solid var(--green);
-    padding-left: 1rem;
+    border: 1px solid rgba(255, 250, 240, 0.34);
+    border-radius: var(--radius);
+    background: rgba(23, 32, 21, 0.48);
+    padding: 1rem;
+    color: #fffaf0;
   }
 
   .note p {
-    color: var(--muted);
+    color: rgba(255, 250, 240, 0.8);
     line-height: 1.75;
   }
 
   .note a {
-    color: var(--green);
+    color: var(--primary);
     font-weight: 700;
   }
 
   @media (max-width: 860px) {
     .hero,
-    .section-grid {
+    .section-grid,
+    .field-notes {
       grid-template-columns: 1fr;
     }
 
@@ -138,7 +272,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
       min-height: auto;
     }
 
-    .hero img {
+    .route-card {
       justify-self: start;
     }
   }

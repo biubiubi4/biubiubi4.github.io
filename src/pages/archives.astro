@@ -11,7 +11,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 <BaseLayout title="文章归档" description="LYC 的文章归档">
   <section class="page-title">
     <h1>文章归档</h1>
-    <p>按时间整理技术笔记、项目实践、工具探索和日常思考。</p>
+    <p>按时间整理技术笔记、项目实践、工具探索和日常思考。每一篇都是路线上留下的一枚坐标。</p>
   </section>
   <PostList posts={posts} />
 </BaseLayout>

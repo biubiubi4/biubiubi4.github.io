@@ -1,14 +1,14 @@
 export const site = {
   title: "LYC 的个人博客",
-  subtitle: "学习、实践与生活记录",
-  description: "记录前端、工具链、AI 工具与日常思考的个人博客。",
+  subtitle: "酸橙公路上的技术札记",
+  description: "记录前端工程、工具链、AI 实践与日常思考的个人博客。",
   url: "https://lyccyl.cn",
   author: "LYC",
   github: "https://github.com/biubiubi4/",
   email: "1419340958@qq.com",
   avatar: "/images/head/head.svg",
-  background: "/images/background/xiaomai.svg",
-  icp: "赣ICP备2021002341号",
+  background: "/images/background/xiaomai.jpg",
+  icp: "豫ICP备2021002341号",
   aiChat: "https://www.tangyuxian.com/weifu.html",
   license: "CC BY-NC-SA 3.0 CN",
 };

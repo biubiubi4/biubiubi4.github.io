@@ -35,16 +35,23 @@ const { posts } = Astro.props;
     display: grid;
     gap: 0.5rem;
     border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 253, 249, 0.72);
-    padding: 1.1rem;
+    border-radius: var(--radius);
+    background:
+      linear-gradient(135deg, rgba(255, 250, 240, 0.96), rgba(255, 250, 240, 0.78)),
+      linear-gradient(90deg, rgba(217, 242, 74, 0.24), transparent);
+    padding: 1.15rem;
     box-shadow: var(--shadow);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
   .post-item:hover {
-    border-color: rgba(216, 95, 60, 0.42);
+    border-color: rgba(217, 242, 74, 0.9);
+    background:
+      linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(255, 250, 240, 0.84)),
+      linear-gradient(90deg, rgba(217, 242, 74, 0.34), rgba(246, 174, 75, 0.12));
     color: inherit;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 28px 78px rgba(62, 46, 24, 0.22);
   }
 
   .post-item span {
@@ -71,9 +78,9 @@ const { posts } = Astro.props;
 
   .post-item em {
     border-radius: 999px;
-    background: rgba(47, 118, 101, 0.1);
+    background: rgba(217, 242, 74, 0.46);
     padding: 0.25rem 0.55rem;
-    color: var(--green);
+    color: var(--text);
     font-size: 0.82rem;
     font-style: normal;
   }
