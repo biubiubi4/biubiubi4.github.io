@@ -1,0 +1,237 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ai } from "../data/ai";
+---
+
+<BaseLayout title={ai.title} description={ai.description}>
+  <section class="page-title ai-hero">
+    <h1>{ai.title}</h1>
+    <p>{ai.description}</p>
+    <div class="hero-pills">
+      <span class="pill">AI 助手</span>
+      <span class="pill">工具清单</span>
+      <span class="pill">提示词</span>
+    </div>
+  </section>
+
+  <section class="assistant">
+    <div class="assistant-head">
+      <span class="avatar" aria-hidden="true">🐟</span>
+      <div class="assistant-meta">
+        <h2>{ai.assistant.name}</h2>
+        <p>{ai.assistant.role}</p>
+      </div>
+      {ai.assistant.link ? (
+        <a class="chat-cta" href={ai.assistant.link} target="_blank" rel="noreferrer">开始对话</a>
+      ) : (
+        <span class="status">{ai.assistant.status}</span>
+      )}
+    </div>
+    <p class="assistant-note">{ai.assistant.note}</p>
+  </section>
+
+  <section class="section">
+    <h2>AI 工具清单</h2>
+    <p class="section-note">记录我常用的 AI 工具，以及它们在我工作流里的位置。</p>
+    <div class="tool-grid">
+      {ai.tools.map((tool) => (
+        <article class="tool-card">
+          <div class="tool-top">
+            <strong>{tool.name}</strong>
+            <span class="tag">待补充</span>
+          </div>
+          <p>{tool.use}</p>
+          {tool.url ? <a href={tool.url} target="_blank" rel="noreferrer">去看看</a> : null}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>提示词分享</h2>
+    <p class="section-note">一些我会反复用到的提示词，整理出来方便复用。</p>
+    <div class="prompt-list">
+      {ai.prompts.map((prompt) => (
+        <article class="prompt-card">
+          <strong>{prompt.title}</strong>
+          <p>{prompt.content}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.1rem;
+  }
+
+  .assistant {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    border: 1px solid rgba(255, 250, 240, 0.42);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(28, 48, 27, 0.9), rgba(23, 32, 21, 0.66));
+    padding: 1.25rem;
+    color: #fffaf0;
+    box-shadow: var(--shadow);
+  }
+
+  .assistant-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .avatar {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    font-size: 1.65rem;
+  }
+
+  .assistant-meta h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .assistant-meta p {
+    margin: 0.2rem 0 0;
+    color: rgba(255, 250, 240, 0.72);
+    font-size: 0.92rem;
+  }
+
+  .status {
+    margin-left: auto;
+    border: 1px solid rgba(217, 242, 74, 0.55);
+    border-radius: 999px;
+    padding: 0.35rem 0.72rem;
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .chat-cta {
+    margin-left: auto;
+    border-radius: 999px;
+    background: var(--primary);
+    padding: 0.55rem 1rem;
+    color: var(--text);
+    font-weight: 800;
+  }
+
+  .assistant-note {
+    margin: 0;
+    color: rgba(255, 250, 240, 0.84);
+    line-height: 1.8;
+  }
+
+  .section {
+    margin-top: 2rem;
+  }
+
+  .section h2 {
+    margin: 0 0 0.4rem;
+    color: #fffaf0;
+    font-size: 1.35rem;
+  }
+
+  .section-note {
+    margin: 0 0 1rem;
+    color: rgba(255, 250, 240, 0.78);
+    line-height: 1.75;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border: 1px solid rgba(255, 250, 240, 0.38);
+    border-radius: 18px;
+    background: var(--surface-soft);
+    padding: 1rem;
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+
+  .tool-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .tool-card strong {
+    font-size: 1.02rem;
+  }
+
+  .tool-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .tool-card a {
+    color: var(--earth);
+    font-weight: 700;
+  }
+
+  .tag {
+    border: 1px solid rgba(201, 84, 48, 0.4);
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+    color: var(--earth);
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .prompt-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .prompt-card {
+    border: 1px solid rgba(255, 250, 240, 0.38);
+    border-radius: 16px;
+    background: rgba(23, 32, 21, 0.52);
+    padding: 1rem;
+    color: #fffaf0;
+    box-shadow: var(--shadow);
+  }
+
+  .prompt-card strong {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .prompt-card p {
+    margin: 0;
+    color: rgba(255, 250, 240, 0.8);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 860px) {
+    .tool-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .status,
+    .chat-cta {
+      margin-left: 0;
+    }
+  }
+</style>

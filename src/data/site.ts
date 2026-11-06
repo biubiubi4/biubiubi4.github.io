@@ -9,7 +9,7 @@ export const site = {
   avatar: "/images/head/head.svg",
   background: "/images/background/xiaomai.jpg",
   icp: "豫ICP备2021002341号",
-  aiChat: "https://www.tangyuxian.com/weifu.html",
+  aiChat: "/ai",
   license: "CC BY-NC-SA 3.0 CN",
 };
 
